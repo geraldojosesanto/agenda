@@ -11,10 +11,13 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
-
+#print(BASE_DIR)
+dir_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#print(dir_path)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -52,10 +55,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'agenda.urls'
 
+#print(os.path.join(dir_path, 'templates'))
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(dir_path, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
